@@ -14,7 +14,7 @@ public class PlayerWinsColumn2Test {
     @Before
     public void setup() {
         // Given
-        this.board = new Board(new Character[][]{
+        board = new Board(new Character[][]{
                 {'X', 'O', ' '},
                 {' ', 'O', ' '},
                 {'X', 'O', ' '}
