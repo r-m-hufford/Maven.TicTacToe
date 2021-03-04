@@ -1,5 +1,7 @@
 package rocks.zipcodewilmington.tictactoe;
 
+import java.sql.SQLOutput;
+
 /**
  * @author leon on 6/22/18.
  */
@@ -80,21 +82,36 @@ public class Board {
     }
 
     public Boolean isTie() {
-        //boolean isTie = false;
-        //boolean oResult = isInFavorOfO();
-        //boolean xResult = isInFavorOfX();
-        //if (!xResult && !oResult) {
-        //    isTie = true;
+        boolean isTie = false;
 
-        return null;
+        if (!isInFavorOfO() && !isInFavorOfO()) {
+            isTie = true;
+        }
+        return isTie;
     }
+        public String getWinner () {
+            String winner = "";
+            boolean wins = isInFavorOfO();
 
-    public String getWinner() {
 
+            if (isInFavorOfO()) {
+                winner = "O";
+            }   else if (isInFavorOfX()) {
+                winner = "X";
+            }
+            return winner;
+        }
+        public boolean horizontalWin (){
+            return false;
+        }
 
-        return null;
+        public boolean verticalWin (){
+            return false;
+        }
+
+        public boolean diagonalWin (){
+            return false;
+        }
     }
-
-}
 
 //if (gameBoard[0][1] == 'O' && gameBoard[0][1]==gameBoard[1][1] && gameBoard[0][1]==gameBoard[2][1])
