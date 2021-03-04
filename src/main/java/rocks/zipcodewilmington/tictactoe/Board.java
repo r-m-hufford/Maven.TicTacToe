@@ -37,11 +37,11 @@ public class Board {
 
         // RIGHT/LEFT Diagonal Condition
 
-        if (gameBoard[0][2]==gameBoard[1][1] && gameBoard[0][2]==gameBoard[2][0]) {
+        if (gameBoard[0][2] == 'X' && gameBoard[0][2]==gameBoard[1][1] && gameBoard[0][2]==gameBoard[2][0]) {
             xWins = true;}
 
         // LEFT/RIGHT Diagonal Condition
-        if (gameBoard[0][0]==gameBoard[1][1] && gameBoard[0][0]==gameBoard[2][2]) {
+        if (gameBoard[0][0] == 'X' && gameBoard[0][0]==gameBoard[1][1] && gameBoard[0][0]==gameBoard[2][2]) {
             xWins = true;}
 
         return xWins;
@@ -71,11 +71,11 @@ public class Board {
 
         // RIGHT/LEFT Diagonal Condition
 
-        if (gameBoard[0][2]==gameBoard[1][1] && gameBoard[0][2]==gameBoard[2][0]) {
+        if (gameBoard[0][2] == 'O' && gameBoard[0][2]==gameBoard[1][1] && gameBoard[0][2]==gameBoard[2][0]) {
             oWins = true;}
 
         // LEFT/RIGHT Diagonal Condition
-        if (gameBoard[0][0]==gameBoard[1][1] && gameBoard[0][0]==gameBoard[2][2]) {
+        if (gameBoard[0][0] == 'O' && gameBoard[0][0]==gameBoard[1][1] && gameBoard[0][0]==gameBoard[2][2]) {
             oWins = true;}
 
         return oWins;
@@ -84,7 +84,7 @@ public class Board {
     public Boolean isTie() {
         boolean isTie = false;
 
-        if (!isInFavorOfO() && !isInFavorOfO()) {
+        if (!isInFavorOfO() && !isInFavorOfX()) {
             isTie = true;
         }
         return isTie;
