@@ -17,32 +17,9 @@ public class Board {
     public Boolean isInFavorOfX() {
         boolean xWins = false;
         //Vertical condition
-        int winningIndex = 0;
-        for (int i = 0; i < gameBoard.length - 1; i++) {
-            if (gameBoard[0][i] == 'X') {
-                winningIndex = i;
-            }
-        }
-        if (gameBoard[0][winningIndex]==gameBoard[1][winningIndex] && gameBoard[0][winningIndex]==gameBoard[2][winningIndex]) {
-            xWins = true;}
-
-        //Horizontal Condition
-        for (int i = 0; i < gameBoard.length - 1; i++) {
-            if (gameBoard[i][0] == 'X') {
-                winningIndex = i;
-            }
-        }
-        if (gameBoard[winningIndex][0]==gameBoard[winningIndex][1] && gameBoard[winningIndex][0]==gameBoard[winningIndex][2]) {
-            xWins = true;}
-
-        // RIGHT/LEFT Diagonal Condition
-
-        if (gameBoard[0][2] == 'X' && gameBoard[0][2]==gameBoard[1][1] && gameBoard[0][2]==gameBoard[2][0]) {
-            xWins = true;}
-
-        // LEFT/RIGHT Diagonal Condition
-        if (gameBoard[0][0] == 'X' && gameBoard[0][0]==gameBoard[1][1] && gameBoard[0][0]==gameBoard[2][2]) {
-            xWins = true;}
+        if (verticalWin('X')) {
+            xWins = true;
+        };
 
         return xWins;
     }
@@ -101,13 +78,25 @@ public class Board {
             }
             return winner;
         }
-        public boolean horizontalWin (){
+
+/////////HELPER FUNCTIONS/////////////HELPER FUNCTIONS//////////////
+
+
+        public boolean horizontalWin (char a) {
             return false;
         }
 
-        public boolean verticalWin (){
-            return false;
-        }
+        public boolean verticalWin (char a){
+            //Vertical condition
+            boolean winner = false;
+            for (int i = 0; i < gameBoard.length - 1; i++) {
+                if (gameBoard[0][i] == a &&
+                        (gameBoard[0][i]==gameBoard[1][i] && gameBoard[0][i]==gameBoard[2][i])) {
+                    winner = true;
+                }
+            }
+            return winner;
+    }
 
         public boolean diagonalWin (){
             return false;
