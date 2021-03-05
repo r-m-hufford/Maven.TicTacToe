@@ -21,6 +21,19 @@ public class Board {
             xWins = true;
         };
 
+        //Horizontal Condition
+        if (horizontalWin('X')) {
+            xWins = true;
+        }
+
+        if (rightToLeftDiagonalWin('X')){
+            xWins = true;
+        }
+
+        if (leftToRightDiagonalWin('X')){
+            xWins = true;
+        }
+
         return xWins;
     }
 
@@ -28,32 +41,22 @@ public class Board {
     public Boolean isInFavorOfO() {
         boolean oWins = false;
         //Vertical condition
-        int winningIndex = 0;
-        for (int i = 0; i < gameBoard.length - 1; i++) {
-            if (gameBoard[0][i] == 'O') {
-                winningIndex = i;
-            }
-        }
-        if (gameBoard[0][winningIndex]==gameBoard[1][winningIndex] && gameBoard[0][winningIndex]==gameBoard[2][winningIndex]) {
-            oWins = true;}
+        if (verticalWin('O')) {
+            oWins = true;
+        };
 
         //Horizontal Condition
-        for (int i = 0; i < gameBoard.length - 1; i++) {
-            if (gameBoard[i][0] == 'O') {
-                winningIndex = i;
-            }
+        if (horizontalWin('O')) {
+            oWins = true;
         }
-        if (gameBoard[winningIndex][0]==gameBoard[winningIndex][1] && gameBoard[winningIndex][0]==gameBoard[winningIndex][2]) {
-            oWins = true;}
 
-        // RIGHT/LEFT Diagonal Condition
+        if (rightToLeftDiagonalWin('X')){
+            oWins = true;
+        }
 
-        if (gameBoard[0][2] == 'O' && gameBoard[0][2]==gameBoard[1][1] && gameBoard[0][2]==gameBoard[2][0]) {
-            oWins = true;}
-
-        // LEFT/RIGHT Diagonal Condition
-        if (gameBoard[0][0] == 'O' && gameBoard[0][0]==gameBoard[1][1] && gameBoard[0][0]==gameBoard[2][2]) {
-            oWins = true;}
+        if (leftToRightDiagonalWin('X')){
+            oWins = true;
+        }
 
         return oWins;
     }
@@ -66,7 +69,8 @@ public class Board {
         }
         return isTie;
     }
-        public String getWinner () {
+
+    public String getWinner () {
             String winner = "";
             boolean wins = isInFavorOfO();
 
@@ -82,14 +86,22 @@ public class Board {
 /////////HELPER FUNCTIONS/////////////HELPER FUNCTIONS//////////////
 
 
-        public boolean horizontalWin (char a) {
-            return false;
+    public boolean horizontalWin (char a) {
+        boolean winner = false;
+        for (int i = 0; i < gameBoard.length; i++) {
+            if (gameBoard[i][0] == a &&
+                    (gameBoard[i][0]==gameBoard[i][1] && gameBoard[i][0]==gameBoard[i][2])) {
+                winner = true;
+            }
         }
+        return winner;
+
+    }
 
         public boolean verticalWin (char a){
             //Vertical condition
             boolean winner = false;
-            for (int i = 0; i < gameBoard.length - 1; i++) {
+            for (int i = 0; i < gameBoard.length; i++) {
                 if (gameBoard[0][i] == a &&
                         (gameBoard[0][i]==gameBoard[1][i] && gameBoard[0][i]==gameBoard[2][i])) {
                     winner = true;
@@ -98,9 +110,20 @@ public class Board {
             return winner;
     }
 
-        public boolean diagonalWin (){
-            return false;
-        }
-    }
+        public boolean rightToLeftDiagonalWin (char a){
+            boolean winner = false;
+            if (gameBoard[0][2] == a && gameBoard[0][2]==gameBoard[1][1] && gameBoard[0][2]==gameBoard[2][0]) {
+                winner = true;}
 
-//if (gameBoard[0][1] == 'O' && gameBoard[0][1]==gameBoard[1][1] && gameBoard[0][1]==gameBoard[2][1])
+            return winner;
+        }
+
+        public boolean leftToRightDiagonalWin (char a){
+            boolean winner = false;
+            if (gameBoard[0][0] == a && gameBoard[0][0]==gameBoard[1][1] && gameBoard[0][0]==gameBoard[2][2]) {
+                winner = true;}
+
+            return winner;
+        }
+
+    }
